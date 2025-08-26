@@ -4,273 +4,2231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurdroid - داونلۆدا یاری و بەرنامێن ئەندرۆید</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-footer a {
-    color: inherit; /* دێ هەمان رەنگێ سپی وەرگریت */
-    text-decoration: none; /* دێ هێلا ژێری راکەت */
-}
-
-footer a:hover {
-    text-decoration: underline; /* دەمێ ماوس دچیتە سەری، هێلەک دکەڤیتە بن */
-}
         :root {
             --primary-color: #3DDC84;
+            --primary-dark: #2AB370;
+            --secondary-color: #6C63FF;
+            --accent-color: #FF6B6B;
             --dark-color: #2c3e50;
             --light-color: #ffffff;
-            --background-color: #f4f4f9;
-            --text-color: #333;
-            --gray-color: #777;
+            --background-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-light: #6c757d;
+            --border-color: #e9ecef;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+        .dark-theme {
+            --primary-color: #3DDC84;
+            --primary-dark: #2AB370;
+            --secondary-color: #7B74FF;
+            --accent-color: #FF6B6B;
+            --dark-color: #121212;
+            --light-color: #1e1e1e;
+            --background-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-light: #a0a0a0;
+            --border-color: #2d2d2d;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
         }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Container */
         .container {
-            width: 90%;
-            margin: 0 auto;
+            width: 100%;
             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
+
+        /* Header */
         header {
             background-color: var(--light-color);
             padding: 15px 0;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
         }
-        header .logo {
-            font-size: 2em;
-            font-weight: bold;
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--dark-color);
+            text-decoration: none;
         }
-        header .logo span {
+
+        .logo span {
             color: var(--primary-color);
         }
-        .section-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            border-right: 4px solid var(--primary-color);
-            padding-right: 10px;
+
+        .logo-icon {
+            height: 40px;
+            width: auto;
         }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Download Manager Button */
+        .download-manager-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .download-manager-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .download-count-badge {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Search Section */
         .search-section {
-            padding: 20px 0;
+            padding: 30px 0 20px;
             text-align: center;
         }
-        .search-bar {
-            width: 80%;
-            max-width: 500px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 1em;
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
         }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
         .search-bar:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.2);
         }
 
-        /* ستایلا نوو بۆ بۆتۆنێن فلتەرکرنێ */
-        .filter-container {
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            color: white;
             text-align: center;
-            margin: 30px 0 20px 0;
+            position: relative;
+            overflow: hidden;
         }
-        .filter-btn {
-            background: none;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 10px 20px;
-            margin: 5px;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
             border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-apps {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .hero-app {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            width: 80px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .hero-app:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-app img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-weight: 500;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: var(--shadow);
         }
-        .filter-btn:hover {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-        .filter-btn.active {
+
+        .category-btn.active, .category-btn:hover {
             background-color: var(--primary-color);
             color: var(--light-color);
         }
 
+        /* Section Title */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px;
+            padding-right: 15px;
+            border-right: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid Container */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 20px;
+            margin-bottom: 30px;
         }
+
+        /* App Card */
         .app-card {
-            background-color: var(--light-color);
-            border-radius: 10px;
-            text-align: center;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
         }
+
+        .app-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .app-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
-        .app-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
+
+        .app-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .app-content {
+            padding: 15px;
+        }
+
+        .app-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            height: 44px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .app-category {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .app-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
             margin-bottom: 10px;
+            font-size: 0.85rem;
         }
-        .app-card .app-name {
-            font-weight: bold;
-            font-size: 1em;
-            height: 40px;
+
+        .stars {
+            color: var(--warning-color);
         }
-        .app-card .app-category {
-            font-size: 0.8em;
-            color: var(--gray-color);
-            margin-bottom: 10px;
+
+        .rating-count {
+            color: var(--text-light);
         }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .download-btn {
-            display: inline-block;
+            flex-grow: 1;
             background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            position: relative;
+            overflow: hidden;
         }
-        footer {
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .download-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .share-btn {
+            background-color: transparent;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 8px;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .share-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--primary-color);
+        }
+
+        /* Security Badge */
+        .security-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--success-color);
+            color: white;
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 2;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            margin: 40px 0;
+        }
+
+        .recommendations-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 5px;
+            scrollbar-width: thin;
+        }
+
+        .recommendation-card {
+            flex: 0 0 auto;
+            width: 140px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .recommendation-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .recommendation-content {
+            padding: 10px;
+        }
+
+        .recommendation-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* No Results */
+        #no-results-message {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            padding: 50px 20px;
+            color: var(--text-light);
+            display: none;
+        }
+
+        #no-results-message i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #no-results-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        /* Load More */
+        .load-more-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        #loadMoreBtn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        #loadMoreBtn:hover {
+            background-color: #5a52e0;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
             background-color: var(--dark-color);
-            color: var(--light-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-notification.show {
+            bottom: 30px;
+        }
+
+        /* Update Notification */
+        .update-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .update-notification.show {
+            transform: translateX(0);
+        }
+
+        .update-notification .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Security Scan Notification */
+        .security-scan-notification {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--info-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 320px;
+        }
+
+        .security-scan-notification.show {
+            transform: translateX(0);
+        }
+
+        .security-scan-notification .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Privacy Policy Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-content {
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .modal-content h3 {
+            margin: 20px 0 10px;
+            color: var(--primary-color);
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .modal-content ul {
+            margin: 10px 0 15px 20px;
+        }
+
+        .modal-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Download Manager Modal */
+        .download-manager-modal .modal {
+            max-width: 800px;
+        }
+        
+        .download-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .download-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .download-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .download-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .download-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            gap: 15px;
+        }
+        
+        .download-item:last-child {
+            border-bottom: none;
+        }
+        
+        .download-item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .download-item-info {
+            flex: 1;
+        }
+        
+        .download-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .download-item-details {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            gap: 15px;
+        }
+        
+        .download-progress-bar {
+            height: 5px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .download-progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .download-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .download-action-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .download-action-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .download-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        /* Featured Apps Section */
+        .featured-section {
+            margin: 40px 0;
+        }
+
+        .featured-app {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .featured-app-image {
+            width: 40%;
+            min-height: 250px;
+            object-fit: cover;
+        }
+
+        .featured-app-content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .featured-app-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .featured-app-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .featured-app-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .featured-download-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .featured-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Share Modal */
+        .share-modal .modal {
+            max-width: 500px;
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .share-option:hover {
+            background-color: rgba(61, 220, 132, 0.1);
+        }
+
+        .share-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .share-option-name {
+            font-size: 0.9rem;
+        }
+
+        .share-link {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .share-link-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .share-link-input:focus {
+            outline: none;
+        }
+
+        .copy-link-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* Animation for elements */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            
+            .app-image {
+                height: 140px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .categories {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .logo-icon {
+                height: 35px;
+            }
+
+            .recommendation-card {
+                width: 120px;
+            }
+
+            .security-scan-notification {
+                max-width: 280px;
+                left: 10px;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .download-actions {
+                align-self: flex-end;
+            }
+
+            .featured-app {
+                flex-direction: column;
+            }
+
+            .featured-app-image {
+                width: 100%;
+                min-height: 200px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-apps {
+                flex-wrap: wrap;
+            }
+
+            .share-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+            
+            .app-image {
+                height: 120px;
+            }
+            
+            .search-bar {
+                padding: 12px 45px 12px 15px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                height: 30px;
+            }
+
+            .recommendation-card {
+                width: 110px;
+            }
+
+            .modal {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .hero-section {
+                padding: 25px 20px;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .share-options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo">Kurd<span>roid</span></div>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://i.ibb.co/fYm0TR8g/IMG-1012.png" alt="Kurdroid Logo" class="logo-icon">
+                    Roid<span>Kurd</span>
+                </a>
+                <div class="nav-actions">
+                    <!-- Download Manager Button -->
+                    <button class="download-manager-btn" id="downloadManagerBtn">
+                        <i class="fas fa-download"></i>
+                        <span class="download-count-badge" id="downloadCount">0</span>
+                    </button>
+                    
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main class="container">
-        <section class="search-section">
-            <input type="text" id="searchInput" class="search-bar" placeholder="ل یاری یان بەرنامەیەکێ بگەڕێ...">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i> پلاتفۆرمی ژماره‌ ١ بۆ داگرتنی ئەپ
+                </div>
+                <h1 class="hero-title">باشترین ئەپەکان بۆ مۆبایلی ئەندرۆید</h1>
+                <p class="hero-subtitle">هەموو ئەپ و یارییەکان بەشێوەیەکی رایگان و بەبێ هەڵە</p>
+                
+                <div class="hero-apps">
+                    <div class="hero-app">
+                        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png" alt="PUBG Mobile">
+                    </div>
+                    <div class="hero-app">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" alt="Instagram">
+                    </div>
+                    <div class="hero-app">
+                        <img src="https://play-lh.googleusercontent.com/Isc4sJZXui8XmJAf4kUgaVk_TOpk4pM6qq8m_dqoTE6Dcmd_uiAsRzYhYnOQ14bbu6I=w480-h960" alt="eFootball">
+                    </div>
+                    <div class="hero-app">
+                        <img src="https://img.freepik.com/premium-vector/vector-tiktok-social-media-logo_1093524-451.jpg?semt=ais_hybrid&w=740&q=80" alt="TikTok">
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <h2 class="section-title">یاری و بەرنامە</h2>
-        
-        <!-- بەشێ نوو: بۆتۆنێن فلتەرکرنێ -->
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">هەمی</button>
-            <button class="filter-btn" data-filter="action">ئەکشن</button>
-            <button class="filter-btn" data-filter="sport">وەرزشی</button>
-            <button class="filter-btn" data-filter="social">سۆشیال</button>
-            <button class="filter-btn" data-filter="tools">ئامراز</button>
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-bar" placeholder="ل یاری یان بەرنامەیەکێ بگەڕێ...">
+                <i class="search-icon fas fa-search"></i>
+            </div>
+        </section>
+
+        <div class="categories" id="categoriesContainer">
+            <!-- Categories will be generated by JavaScript -->
         </div>
 
-        <!-- هەمی کارت د ئێک کونتەینەر دا -->
-        <div class="grid-container">
-            <!-- لێرە داتای "data-category" گرنگە بۆ فلتەرکرنێ -->
-            <div class="app-card" data-category="action">
-                <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png" alt="Game Icon">
-                <div class="app-name">PUBG Mobile</div>
-                <div class="app-category">ئەکشن</div>
-                <a href="https://shrinkme.ink/iamshvan2" class="download-btn">داگرتن</a>
+        <!-- Featured App Section -->
+        <section class="featured-section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                ئەپە هەڵبژاردراوەکان
+            </h2>
+            
+            <div class="featured-app">
+                <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png" alt="PUBG Mobile" class="featured-app-image">
+                <div class="featured-app-content">
+                    <span class="featured-badge">ئەپی هەڵبژاردە</span>
+                    <h2 class="featured-app-title">PUBG Mobile</h2>
+                    <p class="featured-app-description">
+                        یاری PUBG Mobile یاریەکی ئەکشنی کۆمەڵایەتیە کە لەسەر ئەندرۆید و ئای ئۆ ئێس بەردەستە. لە یارییەکدا خەڵکی جیهان کۆدەبنەوە بۆ شەڕکردن و ڕزگاربوون. یارییەکە گرافیکی نایابی هەیە و ڕێگە بە یاریکردن لەگەڵ هاوڕێکان دەدات.
+                    </p>
+                    <div class="featured-app-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-download"></i>
+                            <span>١٠٠ ملیۆن+</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>4.5 (12.5K)</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>1.2 GB</span>
+                        </div>
+                    </div>
+                    <button class="featured-download-btn pulse" data-link="https://shrinkme.ink/iamshvan2">
+                        <i class="fas fa-download"></i>
+                        داگرتن
+                    </button>
+                </div>
             </div>
-            <div class="app-card" data-category="social">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" alt="App Icon">
-                <div class="app-name">Instagram</div>
-                <div class="app-category">سۆشیال</div>
-                <a href="https://shrinkme.ink/iamshvan" class="download-btn">داگرتن</a>
-            </div>
-            <div class="app-card" data-category="sport">
-                <img src="https://play-lh.googleusercontent.com/Isc4sJZXui8XmJAf4kUgaVk_TOpk4pM6qq8m_dqoTE6Dcmd_uiAsRzYhYnOQ14bbu6I=w480-h960" alt="Game Icon">
-                <div class="app-name">eFootball</div>
-                <div class="app-category">وەرزشی</div>
-                <a href="https://shrinkme.ink/cfViwF" class="download-btn">داگرتن</a>
-            </div>
-            <div class="app-card" data-category="social">
-                <img src="https://img.freepik.com/premium-vector/vector-tiktok-social-media-logo_1093524-451.jpg?semt=ais_hybrid&w=740&q=80" alt="App Icon">
-                <div class="app-name">TikTok</div>
-                <div class="app-category">سۆشیال</div>
-                <a href="https://shrinkme.ink/akRrUqu" class="download-btn">داگرتن</a>
-            </div>
-            <div class="app-card" data-category="action">
-                <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/07/75/6870b664d8612_com.supercell.clashofclans.png" alt="Game Icon">
-                <div class="app-name">Clash of Clans</div>
-                <div class="app-category">ئەکشن</div>
-                <a href="https://shrinkme.ink/VB9ntOP1" class="download-btn">داگرتن</a>
-            </div>
-            <div class="app-card" data-category="tools">
-                <img src="https://static.vecteezy.com/system/resources/previews/013/948/546/non_2x/capcut-logo-on-transparent-white-background-free-vector.jpg" alt="App Icon">
-                <div class="app-name">CapCut</div>
-                <div class="app-category">ئامراز</div>
-                <a href="https://shrinkme.ink/lvF7JBvR" class="download-btn">داگرتن</a>
-            </div>
-             <div class="app-card" data-category="action">
-                <img src="https://an1.com/uploads/posts/2024-08/1723932486_gta-sa.png" alt="Game Icon">
-                <div class="app-name">Gta sa mod</div>
-                <div class="app-category">ئەکشن</div>
-                <a href="https://shrinkme.ink/L60JC0" class="download-btn">داگرتن</a>
-            </div>
-            <div class="app-card" data-category="tools">
-                <img src="https://an1.com/uploads/posts/2023-04/1682417698_whatsapp-messenger.png" alt="App Icon">
-                <div class="app-name">WhatsApp Messenger</div>
-                <div class="app-category">ئامراز</div>
-                <a href="https://shrinkme.ink/h6VZuu" class="download-btn">داگرتن</a>
+        </section>
+
+        <h2 class="section-title">
+            <i class="fas fa-grid"></i>
+            یاری و بەرنامە
+        </h2>
+        
+        <div class="grid-container" id="appsGrid"></div>
+        
+        <div id="no-results-message">
+            <i class="fas fa-search"></i>
+            <h3>ببورە، چ ئەنجام نەهاتنە دیتن!</h3>
+            <p>ژبۆ لێگەریانەکا دی بجەڕبینە.</p>
+        </div>
+        
+        <div class="load-more-container">
+            <button id="loadMoreBtn">
+                <i class="fas fa-arrow-down"></i>
+                بارکرنا زێدەتر
+            </button>
+        </div>
+
+        <div class="recommendations-section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                پێشنیارکراوەکان بۆ تۆ
+            </h2>
+            <div class="recommendations-container" id="recommendationsContainer">
+                <!-- Recommendations will be generated by JavaScript -->
             </div>
         </div>
     </main>
 
+    <div id="toast" class="toast-notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">لینک هاتە کۆپیکرن!</span>
+    </div>
+
+    <div id="updateNotification" class="update-notification">
+        <i class="fas fa-sync-alt"></i>
+        <span id="updateMessage">نوێکردنەوەیەک بەردەستە بۆ ئەپەکانت!</span>
+        <button class="close-btn" id="closeUpdateNotification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div id="securityScanNotification" class="security-scan-notification">
+        <i class="fas fa-shield-alt"></i>
+        <span id="securityScanMessage">پشکنینی ئەپەکە بۆ مەلەرە بە سەرکەوتوویی تەواو بوو</span>
+        <button class="close-btn" id="closeSecurityNotification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Download Manager Modal -->
+    <div class="modal-overlay download-manager-modal" id="downloadManagerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">بەڕێوەبەری داگرتنەکان</h2>
+                <button class="modal-close" id="closeDownloadManagerModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="download-tabs">
+                    <div class="download-tab active" data-tab="active">چالاک</div>
+                    <div class="download-tab" data-tab="completed">تەواو</div>
+                    <div class="download-tab" data-tab="failed">شکست خواردوو</div>
+                </div>
+                
+                <div class="download-list" id="downloadList">
+                    <!-- Download items will be added here dynamically -->
+                    <div class="empty-state" id="emptyDownloadState">
+                        <i class="fas fa-download"></i>
+                        <h3>هیچ داگرتنێک نیە</h3>
+                        <p>ئەپێک دابگرە بۆ دەستپێکردن</p>
+                    </div>
+                </div>
+                
+                <div class="download-stats">
+                    <span>کۆی گشتی: <span id="totalDownloads">0</span></span>
+                    <span>بەکارهێنراو: <span id="totalSize">0 MB</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal-overlay share-modal" id="shareModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">هاوبەشی کردنی ئەپ</h2>
+                <button class="modal-close" id="closeShareModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="share-options">
+                    <div class="share-option" data-method="facebook">
+                        <i class="fab fa-facebook share-icon" style="color: #1877F2;"></i>
+                        <span class="share-option-name">فەیسبووک</span>
+                    </div>
+                    <div class="share-option" data-method="twitter">
+                        <i class="fab fa-twitter share-icon" style="color: #1DA1F2;"></i>
+                        <span class="share-option-name">تویتەر</span>
+                    </div>
+                    <div class="share-option" data-method="whatsapp">
+                        <i class="fab fa-whatsapp share-icon" style="color: #25D366;"></i>
+                        <span class="share-option-name">واتسئاپ</span>
+                    </div>
+                    <div class="share-option" data-method="telegram">
+                        <i class="fab fa-telegram share-icon" style="color: #0088cc;"></i>
+                        <span class="share-option-name">تێلێگرام</span>
+                    </div>
+                    <div class="share-option" data-method="link">
+                        <i class="fas fa-link share-icon" style="color: var(--primary-color);"></i>
+                        <span class="share-option-name">لینک</span>
+                    </div>
+                </div>
+                
+                <div class="share-link">
+                    <input type="text" class="share-link-input" id="shareLinkInput" readonly>
+                    <button class="copy-link-btn" id="copyLinkBtn">
+                        <i class="fas fa-copy"></i> کۆپی
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">پۆلێسی پاراستنی نهێنی</h2>
+                <button class="modal-close" id="closePrivacyModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <p>لە Kurdroid، ئێمە پاراستنی زانیارییە کەسییەکان و سەلامەتی بەکارهێنەرانی ئێمە لە پێشەنگی کارەکانماندایە. ئەم پۆلێسی پاراستنی نهێنییە ڕوون دەکاتەوە کە چۆن ئێمە زانیارییەکان کۆدەکەینەوە, بەکاردەهێنین و پارێزگاری لێدەکەین.</p>
+                
+                <h3>زانیارییەکانی کۆکراوە</h3>
+                <p>ئێمە تەنها زانیارییە کەسییە کەمەکان کۆدەکەینەوە کە پێویستن بۆ باشترکردنی ئەزموونی بەکارهێنەران:</p>
+                <ul>
+                    <li>زانیارییەکانی داگرتن (کە ئەپێک چەند جار دایگرێت)</li>
+                    <li>پسپۆڕییەکانی وێبگەڕ (بەکارهێنانی زمان و شوێن)</li>
+                    <li>ئەپە داگیراوەکان (بۆ پێشنیارکردنی نوێکردنەوەکان)</li>
+                </ul>
+                
+                <h3>چۆنێتی بەکارهێنانی زانیارییەکان</h3>
+                <p>ئێمە زانیارییەکان بەکاردەهێنین بۆ:</p>
+                <ul>
+                    <li>پێشنیارکردنی ئەپە پەیوەندیدارەکان</li>
+                    <li>ناسینەوەی ئەپە باوەکان</li>
+                    <li>دەستەبەرکردنی نوێکردنەوە بۆ ئەپە داگیراوەکان</li>
+                    <li>باشترکردنی کوالێتی خزمەتگوزاریەکە</li>
+                </ul>
+                
+                <h3>پاراستنی زانیارییەکان</h3>
+                <p>هیچ زانیارییەکی کەسی فرۆشراو نیە بۆ هەر کۆمپانیایەکی تر. هەموو زانیارییەکان لەلایەن پارێزگارییەکی پێشکەوتووەوە پارێزگاری لێدەکرێن.</p>
+                
+                <h3>پشکنینی سەلامەتی</h3>
+                <p>هەموو ئەپەکان لەڕێی پشکنینی مەلەرەوە دەڕۆن پێش ئەوەی بخرێنە بەردەستدا. ئێمە پشکنینی ڕۆژانە دەکەین بۆ دڵنیابوون لەوەی کە هیچ مەلەرەیەک لە ئەپەکاندا نیە.</p>
+                
+                <h3>پەیوەندی کردن</h3>
+                <p>ئەگەر پرسیارێکت هەیە دەربارەی ئەم پۆلێسی پاراستنی نهێنییە, تکایە پەیوەندی بە ئێمەوە بکە لە <a href="mailto:privacy@kurdroid.com">privacy@kurdroid.com</a>.</p>
+                
+                <p>کۆتا نوێکردنەوە: ١ی کانوونی دووەمی ٢٠٢٥</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <!-- کۆدێ نوو -->
-<p>&copy; 2025 <a href="https://www.instagram.com/iamshvan.26?igsh=NDkxNjN4bTd2eDEw&utm_source=qr">shvan jamal</a>. هەمی ماف پاراستینە.</p>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 <a href="https://www.instagram.com/iamshvan.26">shvan jamal</a>. هەمی ماف پاراستینە.</p>
+                <div class="footer-links">
+                    <a href="#" id="privacyLink">پۆلێسی پاراستنی نهێنی</a>
+                    <a href="#" id="securityLink">زانیاری سەلامەتی</a>
+                    <a href="mailto:iamshvan@gmail.com">پەیوەندی</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- =========== کۆدێ JavaScript بۆ لێگەریان و فلتەرکرنێ =========== -->
     <script>
-        // --- بەشێ لێگەریانێ (Search) ---
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.toUpperCase();
-            let allCards = document.querySelectorAll('.app-card');
-            allCards.forEach(card => {
-                let appName = card.querySelector('.app-name').textContent || card.querySelector('.app-name').innerText;
-                if (appName.toUpperCase().indexOf(filter) > -1) {
-                    card.style.display = "";
-                } else {
-                    card.style.display = "none";
+        // App data with ratings and security info
+        const appData = [
+            { name: "PUBG Mobile", category: "action", img: "https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png", link: "https://shrinkme.ink/iamshvan2", rating: 4.5, reviews: 12500, verified: true, lastScanned: "2025-01-15" },
+            { name: "Instagram", category: "social", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png", link: "https://shrinkme.ink/iamshvan", rating: 4.3, reviews: 8560, verified: true, lastScanned: "2025-01-14" },
+            { name: "eFootball", category: "sport", img: "https://play-lh.googleusercontent.com/Isc4sJZXui8XmJAf4kUgaVk_TOpk4pM6qq8m_dqoTE6Dcmd_uiAsRzYhYnOQ14bbu6I=w480-h960", link: "https://shrinkme.ink/cfViwF", rating: 4.0, reviews: 7200, verified: true, lastScanned: "2025-01-13" },
+            { name: "TikTok", category: "social", img: "https://img.freepik.com/premium-vector/vector-tiktok-social-media-logo_1093524-451.jpg?semt=ais_hybrid&w=740&q=80", link: "https://shrinkme.ink/akRrUqu", rating: 4.2, reviews: 15300, verified: true, lastScanned: "2025-01-16" },
+            { name: "Clash of Clans", category: "action", img: "https://downloadr2.apkmirror.com/wp-content/uploads/2025/07/75/6870b664d8612_com.supercell.clashofclans.png", link: "https://shrinkme.ink/VB9ntOP1", rating: 4.7, reviews: 18900, verified: true, lastScanned: "2025-01-12" },
+            { name: "CapCut", category: "tools", img: "https://static.vecteezy.com/system/resources/previews/013/948/546/non_2x/capcut-logo-on-transparent-white-background-free-vector.jpg", link: "https://shrinkme.ink/lvF7JBvR", rating: 4.4, reviews: 9400, verified: true, lastScanned: "2025-01-11" },
+            { name: "Gta sa mod", category: "action", img: "https://an1.com/uploads/posts/2024-08/1723932486_gta-sa.png", link: "https://shrinkme.ink/L60JC0", rating: 4.6, reviews: 11200, verified: false, lastScanned: "2025-01-10" },
+            { name: "WhatsApp", category: "tools", img: "https://an1.com/uploads/posts/2023-04/1682417698_whatsapp-messenger.png", link: "https://shrinkme.ink/h6VZuu", rating: 4.8, reviews: 24500, verified: true, lastScanned: "2025-01-17" },
+            { name: "FIFA Mobile", category: "sport", img: "https://play-lh.googleusercontent.com/Y9b4eFdmIVxCSX1nkcVTanNQf8Xwwi8Sw9dugY5ttHCKaWJ0p-Rmdvd-yv6FNm9vSGs=w480-h960", link: "https://shrinkme.top/M1JNB", rating: 4.1, reviews: 6800, verified: true, lastScanned: "2025-01-09" },
+            { name: "Snapchat", category: "social", img: "https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-5cgT09yMo", link: "https://shrinkme.top/LA7Gh", rating: 3.9, reviews: 10200, verified: true, lastScanned: "2025-01-08" },
+            { name: "Telegram", category: "tools", img: "https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q", link: "https://shrinkme.top/7N3cHae", rating: 4.5, reviews: 13500, verified: true, lastScanned: "2025-01-07" },
+            { name: "Free Fire", category: "action", img: "https://play-lh.googleusercontent.com/jHnf_3-yMox_Tub_oLKQ7OuOi8Iahf1f4rdu-etZ2hmzUOekY84znct-c8hksxhD15PYNk4dMH2ZdVY3uxm7Gw=w480-h960", link: "https://shrinkme.top/4iLR8r4Z", rating: 4.3, reviews: 16700, verified: true, lastScanned: "2025-01-06" }
+        ];
+
+        // Category data
+        const navData = [
+            { filter: 'all', label: 'هەمی', icon: 'fas fa-th' },
+            { filter: 'action', label: 'ئەکشن', icon: 'fas fa-fighter-jet' },
+            { filter: 'sport', label: 'وەرزشی', icon: 'fas fa-futbol' },
+            { filter: 'social', label: 'سۆشیال', icon: 'fas fa-comments' },
+            { filter: 'tools', label: 'ئامراز', icon: 'fas fa-tools' }
+        ];
+
+        // DOM elements
+        const appsGrid = document.getElementById('appsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const noResultsMessage = document.getElementById('no-results-message');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const themeToggle = document.getElementById('themeToggle');
+        const recommendationsContainer = document.getElementById('recommendationsContainer');
+        const updateNotification = document.getElementById('updateNotification');
+        const updateMessage = document.getElementById('updateMessage');
+        const closeUpdateNotification = document.getElementById('closeUpdateNotification');
+        const securityScanNotification = document.getElementById('securityScanNotification');
+        const securityScanMessage = document.getElementById('securityScanMessage');
+        const closeSecurityNotification = document.getElementById('closeSecurityNotification');
+        const privacyModal = document.getElementById('privacyModal');
+        const closePrivacyModal = document.getElementById('closePrivacyModal');
+        const privacyLink = document.getElementById('privacyLink');
+        const securityLink = document.getElementById('securityLink');
+        
+        // Download Manager elements
+        const downloadManagerBtn = document.getElementById('downloadManagerBtn');
+        const downloadManagerModal = document.getElementById('downloadManagerModal');
+        const closeDownloadManagerModal = document.getElementById('closeDownloadManagerModal');
+        const downloadList = document.getElementById('downloadList');
+        const downloadCount = document.getElementById('downloadCount');
+        const emptyDownloadState = document.getElementById('emptyDownloadState');
+        const totalDownloads = document.getElementById('totalDownloads');
+        const totalSize = document.getElementById('totalSize');
+        const downloadTabs = document.querySelectorAll('.download-tab');
+        const featuredDownloadBtn = document.querySelector('.featured-download-btn');
+        
+        // Share Modal elements
+        const shareModal = document.getElementById('shareModal');
+        const closeShareModal = document.getElementById('closeShareModal');
+        const shareLinkInput = document.getElementById('shareLinkInput');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const shareOptions = document.querySelectorAll('.share-option');
+
+        // State variables
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let visibleApps = 8;
+        let isDarkTheme = localStorage.getItem('darkTheme') === 'true';
+        let currentAppToShare = null;
+        
+        // Download manager state
+        let downloads = JSON.parse(localStorage.getItem('kurdroid_downloads')) || [];
+        let activeDownloads = [];
+
+        // Initialize the app
+        function initApp() {
+            renderCategories();
+            renderApps();
+            renderRecommendations();
+            setupEventListeners();
+            applyTheme();
+            initDownloadManager();
+            
+            // Show security scan notification after 3 seconds
+            setTimeout(() => {
+                showSecurityScanNotification();
+            }, 3000);
+        }
+
+        // Initialize download manager
+        function initDownloadManager() {
+            updateDownloadBadge();
+            updateDownloadStats();
+            
+            // Set up event listeners for download manager
+            downloadManagerBtn.addEventListener('click', () => {
+                downloadManagerModal.classList.add('active');
+                renderDownloadList('active');
+            });
+            
+            closeDownloadManagerModal.addEventListener('click', () => {
+                downloadManagerModal.classList.remove('active');
+            });
+            
+            // Tab switching
+            downloadTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    downloadTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    renderDownloadList(tab.getAttribute('data-tab'));
+                });
+            });
+            
+            // Close modal when clicking outside
+            downloadManagerModal.addEventListener('click', (e) => {
+                if (e.target === downloadManagerModal) {
+                    downloadManagerModal.classList.remove('active');
                 }
             });
-        });
+        }
+        
+        // Add download to manager
+        function addToDownloadManager(app, link) {
+            const downloadId = Date.now().toString();
+            const download = {
+                id: downloadId,
+                appId: app.name,
+                name: app.name,
+                image: app.img,
+                link: link,
+                progress: 0,
+                status: 'downloading', // downloading, completed, failed, paused
+                date: new Date().toISOString(),
+                size: Math.floor(Math.random() * 500) + 50 // Random size between 50-550MB
+            };
+            
+            downloads.unshift(download);
+            activeDownloads.push(downloadId);
+            
+            // Save to localStorage
+            localStorage.setItem('kurdroid_downloads', JSON.stringify(downloads));
+            
+            updateDownloadBadge();
+            updateDownloadStats();
+            
+            // If download manager is open, update the list
+            if (downloadManagerModal.classList.contains('active')) {
+                renderDownloadList('active');
+            }
+            
+            return downloadId;
+        }
+        
+        // Update download progress
+        function updateDownloadProgress(downloadId, progress) {
+            const downloadIndex = downloads.findIndex(d => d.id === downloadId);
+            if (downloadIndex !== -1) {
+                downloads[downloadIndex].progress = progress;
+                
+                if (progress === 100) {
+                    downloads[downloadIndex].status = 'completed';
+                    const activeIndex = activeDownloads.indexOf(downloadId);
+                    if (activeIndex !== -1) {
+                        activeDownloads.splice(activeIndex, 1);
+                    }
+                }
+                
+                localStorage.setItem('kurdroid_downloads', JSON.stringify(downloads));
+                
+                // If download manager is open, update the list
+                if (downloadManagerModal.classList.contains('active')) {
+                    renderDownloadList('active');
+                }
+                
+                updateDownloadBadge();
+                updateDownloadStats();
+            }
+        }
+        
+        // Update download badge count
+        function updateDownloadBadge() {
+            const activeCount = downloads.filter(d => d.status === 'downloading' || d.status === 'paused').length;
+            downloadCount.textContent = activeCount;
+            downloadCount.style.display = activeCount > 0 ? 'flex' : 'none';
+        }
+        
+        // Update download statistics
+        function updateDownloadStats() {
+            totalDownloads.textContent = downloads.length;
+            
+            const totalSizeMB = downloads.reduce((total, download) => {
+                return total + (download.status === 'completed' ? download.size : 0);
+            }, 0);
+            
+            totalSize.textContent = `${totalSizeMB} MB`;
+        }
+        
+        // Render download list based on tab
+        function renderDownloadList(tab) {
+            let filteredDownloads = [];
+            
+            switch(tab) {
+                case 'active':
+                    filteredDownloads = downloads.filter(d => d.status === 'downloading' || d.status === 'paused');
+                    break;
+                case 'completed':
+                    filteredDownloads = downloads.filter(d => d.status === 'completed');
+                    break;
+                case 'failed':
+                    filteredDownloads = downloads.filter(d => d.status === 'failed');
+                    break;
+            }
+            
+            if (filteredDownloads.length === 0) {
+                emptyDownloadState.style.display = 'block';
+                downloadList.innerHTML = '';
+                downloadList.appendChild(emptyDownloadState);
+                return;
+            }
+            
+            emptyDownloadState.style.display = 'none';
+            downloadList.innerHTML = '';
+            
+            filteredDownloads.forEach(download => {
+                const downloadItem = createDownloadItem(download);
+                downloadList.appendChild(downloadItem);
+            });
+        }
+        
+        // Create download item element
+        function createDownloadItem(download) {
+            const item = document.createElement('div');
+            item.className = 'download-item';
+            item.setAttribute('data-id', download.id);
+            
+            const statusIcon = download.status === 'completed' ? 'fa-check-circle' : 
+                              download.status === 'failed' ? 'fa-exclamation-circle' : 
+                              download.status === 'paused' ? 'fa-pause-circle' : 'fa-download';
+            
+            const statusColor = download.status === 'completed' ? 'var(--success-color)' : 
+                               download.status === 'failed' ? 'var(--danger-color)' : 
+                               download.status === 'paused' ? 'var(--warning-color)' : 'var(--primary-color)';
+            
+            item.innerHTML = `
+                <i class="fas ${statusIcon} download-status-icon" style="color: ${statusColor}"></i>
+                <img src="${download.image}" alt="${download.name}" class="download-item-image">
+                <div class="download-item-info">
+                    <div class="download-item-name">${download.name}</div>
+                    <div class="download-item-details">
+                        <span>${download.size} MB</span>
+                        <span>${formatDate(download.date)}</span>
+                    </div>
+                    ${download.status !== 'completed' && download.status !== 'failed' ? `
+                    <div class="download-progress-bar">
+                        <div class="download-progress-fill" style="width: ${download.progress}%"></div>
+                    </div>
+                    ` : ''}
+                </div>
+                <div class="download-actions">
+                    ${download.status === 'downloading' ? `
+                    <button class="download-action-btn pause-download" title="پشوو">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    ` : ''}
+                    ${download.status === 'paused' ? `
+                    <button class="download-action-btn resume-download" title="دەستپێکردنەوە">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    ` : ''}
+                    <button class="download-action-btn delete-download" title="سڕینەوە">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Add event listeners for action buttons
+            const deleteBtn = item.querySelector('.delete-download');
+            deleteBtn.addEventListener('click', () => {
+                deleteDownload(download.id);
+            });
+            
+            if (download.status === 'downloading') {
+                const pauseBtn = item.querySelector('.pause-download');
+                pauseBtn.addEventListener('click', () => {
+                    pauseDownload(download.id);
+                });
+            }
+            
+            if (download.status === 'paused') {
+                const resumeBtn = item.querySelector('.resume-download');
+                resumeBtn.addEventListener('click', () => {
+                    resumeDownload(download.id);
+                });
+            }
+            
+            return item;
+        }
+        
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ku');
+        }
+        
+        // Pause download
+        function pauseDownload(downloadId) {
+            const downloadIndex = downloads.findIndex(d => d.id === downloadId);
+            if (downloadIndex !== -1) {
+                downloads[downloadIndex].status = 'paused';
+                localStorage.setItem('kurdroid_downloads', JSON.stringify(downloads));
+                renderDownloadList('active');
+            }
+        }
+        
+        // Resume download
+        function resumeDownload(downloadId) {
+            const downloadIndex = downloads.findIndex(d => d.id === downloadId);
+            if (downloadIndex !== -1) {
+                downloads[downloadIndex].status = 'downloading';
+                localStorage.setItem('kurdroid_downloads', JSON.stringify(downloads));
+                renderDownloadList('active');
+                
+                // Simulate download progress for demo
+                simulateDownloadProgress(downloadId);
+            }
+        }
+        
+        // Delete download
+        function deleteDownload(downloadId) {
+            downloads = downloads.filter(d => d.id !== downloadId);
+            localStorage.setItem('kurdroid_downloads', JSON.stringify(downloads));
+            
+            const activeIndex = activeDownloads.indexOf(downloadId);
+            if (activeIndex !== -1) {
+                activeDownloads.splice(activeIndex, 1);
+            }
+            
+            updateDownloadBadge();
+            updateDownloadStats();
+            renderDownloadList('active');
+        }
+        
+        // Simulate download progress for demo purposes
+        function simulateDownloadProgress(downloadId) {
+            let progress = downloads.find(d => d.id === downloadId).progress;
+            
+            const interval = setInterval(() => {
+                progress += 5;
+                
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                }
+                
+                updateDownloadProgress(downloadId, progress);
+            }, 500);
+        }
 
-        // --- بەشێ نوو: فلتەرکرن ب پۆلێنان (Category Filter) ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const appCards = document.querySelectorAll('.app-card');
+        // Share app function
+        function shareApp(app, method) {
+            const appName = encodeURIComponent(app.name);
+            const appLink = encodeURIComponent(app.link);
+            const shareText = encodeURIComponent(`سەیرکردنی ئەپی ${app.name} لە Kurdroid`);
+            
+            let shareUrl = '';
+            
+            switch(method) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${appLink}&quote=${shareText}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${appLink}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${shareText} ${appLink}`;
+                    break;
+                case 'telegram':
+                    shareUrl = `https://t.me/share/url?url=${appLink}&text=${shareText}`;
+                    break;
+                case 'link':
+                    // For link copying, we'll handle it separately
+                    shareLinkInput.value = app.link;
+                    shareLinkInput.select();
+                    document.execCommand('copy');
+                    showToast('لینک هاتە کۆپیکرن!');
+                    return;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank');
+                showToast('ئەپەکە هاوبەش کرا!');
+            }
+        }
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // چالاککرنا بۆتۆنا کلیک لێکری
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+        // Show share modal
+        function showShareModal(app) {
+            currentAppToShare = app;
+            shareLinkInput.value = app.link;
+            shareModal.classList.add('active');
+        }
 
-                const filter = button.getAttribute('data-filter');
+        // Show toast notification with custom message
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-                // نیشاندان و ڤەشارتنا کارتا
-                appCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block'; // یان هەر دیزاینەکا دی
-                    } else {
-                        card.style.display = 'none';
+        // Show security scan notification
+        function showSecurityScanNotification() {
+            const randomApp = appData[Math.floor(Math.random() * appData.length)];
+            securityScanMessage.textContent = `پشکنینی ${randomApp.name} بۆ مەلەرە بە سەرکەوتوویی تەواو بوو`;
+            securityScanNotification.classList.add('show');
+            
+            setTimeout(() => {
+                securityScanNotification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Show update notification
+        function showUpdateNotification() {
+            const randomApp = appData[Math.floor(Math.random() * appData.length)];
+            updateMessage.textContent = `نوێکردنەوەیەک بەردەستە بۆ ${randomApp.name}`;
+            updateNotification.classList.add('show');
+            
+            setTimeout(() => {
+                updateNotification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            isDarkTheme = !isDarkTheme;
+            localStorage.setItem('darkTheme', isDarkTheme);
+            applyTheme();
+        }
+
+        // Apply theme based on current state
+        function applyTheme() {
+            if (isDarkTheme) {
+                document.body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Render categories
+        function renderCategories() {
+            categoriesContainer.innerHTML = '';
+            navData.forEach(item => {
+                const button = document.createElement('button');
+                button.className = `category-btn ${item.filter === currentFilter ? 'active' : ''}`;
+                button.setAttribute('data-filter', item.filter);
+                button.innerHTML = `<i class="${item.icon}"></i> ${item.label}`;
+                categoriesContainer.appendChild(button);
+            });
+        }
+
+        // Render apps based on filter and search
+        function renderApps() {
+            const filteredApps = filterApps();
+            
+            if (filteredApps.length === 0) {
+                noResultsMessage.style.display = 'block';
+                appsGrid.style.display = 'none';
+                return;
+            }
+            
+            noResultsMessage.style.display = 'none';
+            appsGrid.style.display = 'grid';
+            
+            appsGrid.innerHTML = '';
+            
+            filteredApps.slice(0, visibleApps).forEach((app, index) => {
+                const appCard = createAppCard(app, index);
+                appsGrid.appendChild(appCard);
+                
+                // Add animation delay
+                setTimeout(() => {
+                    appCard.classList.add('visible');
+                }, index * 100);
+            });
+            
+            // Show/hide load more button
+            loadMoreBtn.style.display = filteredApps.length > visibleApps ? 'block' : 'none';
+        }
+
+        // Filter apps based on current filter and search
+        function filterApps() {
+            return appData.filter(app => {
+                const matchesFilter = currentFilter === 'all' || app.category === currentFilter;
+                const matchesSearch = app.name.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+        }
+
+        // Create an app card element
+        function createAppCard(app, index) {
+            const card = document.createElement('div');
+            card.className = 'app-card';
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            // Generate star rating HTML
+            const fullStars = Math.floor(app.rating);
+            const halfStar = app.rating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            
+            let starsHTML = '';
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="fas fa-star"></i>';
+            }
+            if (halfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '<i class="far fa-star"></i>';
+            }
+            
+            card.innerHTML = `
+                ${app.verified ? '<div class="security-badge"><i class="fas fa-shield-alt"></i> پشکنراوە</div>' : ''}
+                <img src="${app.img}" alt="${app.name}" class="app-image">
+                <div class="app-content">
+                    <h3 class="app-name">${app.name}</h3>
+                    <p class="app-category">${getCategoryLabel(app.category)}</p>
+                    <div class="app-rating">
+                        <div class="stars">${starsHTML}</div>
+                        <span class="rating-count">(${formatNumber(app.reviews)})</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="download-btn" data-link="${app.link}">
+                            <i class="fas fa-download"></i>
+                            <span>داگرتن</span>
+                            <div class="download-progress"></div>
+                        </button>
+                        <button class="share-btn" data-app="${app.name}">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Render recommendations
+        function renderRecommendations() {
+            recommendationsContainer.innerHTML = '';
+            
+            // Get 4 random apps for recommendations
+            const shuffledApps = [...appData].sort(() => 0.5 - Math.random());
+            const selectedApps = shuffledApps.slice(0, 4);
+            
+            selectedApps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'recommendation-card';
+                card.innerHTML = `
+                    <img src="${app.img}" alt="${app.name}" class="recommendation-image">
+                    <div class="recommendation-content">
+                        <h3 class="recommendation-name">${app.name}</h3>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    window.open(app.link, '_blank');
+                });
+                
+                recommendationsContainer.appendChild(card);
+            });
+        }
+
+        // Get category label
+        function getCategoryLabel(category) {
+            const categoryItem = navData.find(item => item.filter === category);
+            return categoryItem ? categoryItem.label : category;
+        }
+
+        // Format large numbers
+        function formatNumber(num) {
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Category filter
+            categoriesContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('category-btn') || e.target.parentElement.classList.contains('category-btn')) {
+                    const button = e.target.classList.contains('category-btn') ? e.target : e.target.parentElement;
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active button
+                    document.querySelectorAll('.category-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    
+                    // Update filter and render apps
+                    currentFilter = filter;
+                    visibleApps = 8;
+                    renderApps();
+                }
+            });
+            
+            // Search input
+            searchInput.addEventListener('input', () => {
+                currentSearch = searchInput.value;
+                visibleApps = 8;
+                renderApps();
+            });
+            
+            // Load more button
+            loadMoreBtn.addEventListener('click', () => {
+                visibleApps += 8;
+                renderApps();
+            });
+            
+            // Download buttons
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('download-btn') || e.target.parentElement.classList.contains('download-btn')) {
+                    const button = e.target.classList.contains('download-btn') ? e.target : e.target.parentElement;
+                    const link = button.getAttribute('data-link');
+                    
+                    // Find the app data
+                    const appCard = button.closest('.app-card');
+                    const appName = appCard.querySelector('.app-name').textContent;
+                    const app = appData.find(a => a.name === appName);
+                    
+                    if (app) {
+                        // Add to download manager
+                        const downloadId = addToDownloadManager(app, link);
+                        
+                        // Simulate download progress
+                        simulateDownloadProgress(downloadId);
+                        
+                        // Simulate download progress in button
+                        const progressBar = button.querySelector('.download-progress');
+                        progressBar.style.width = '0%';
+                        
+                        let progress = 0;
+                        const interval = setInterval(() => {
+                            progress += 5;
+                            progressBar.style.width = `${progress}%`;
+                            
+                            if (progress >= 100) {
+                                clearInterval(interval);
+                                window.open(link, '_blank');
+                                showToast('داگرتن تەواو بوو!');
+                                
+                                // Reset progress after a delay
+                                setTimeout(() => {
+                                    progressBar.style.width = '0%';
+                                }, 1000);
+                            }
+                        }, 50);
+                    }
+                }
+                
+                // Share buttons
+                if (e.target.classList.contains('share-btn') || e.target.parentElement.classList.contains('share-btn')) {
+                    const button = e.target.classList.contains('share-btn') ? e.target : e.target.parentElement;
+                    const appName = button.getAttribute('data-app');
+                    const app = appData.find(a => a.name === appName);
+                    
+                    if (app) {
+                        showShareModal(app);
+                    }
+                }
+                
+                // Featured app download button
+                if (e.target.classList.contains('featured-download-btn') || e.target.parentElement.classList.contains('featured-download-btn')) {
+                    const button = e.target.classList.contains('featured-download-btn') ? e.target : e.target.parentElement;
+                    const link = button.getAttribute('data-link');
+                    const app = appData.find(a => a.name === "PUBG Mobile");
+                    
+                    if (app) {
+                        // Add to download manager
+                        const downloadId = addToDownloadManager(app, link);
+                        
+                        // Simulate download progress
+                        simulateDownloadProgress(downloadId);
+                        
+                        window.open(link, '_blank');
+                        showToast('داگرتن تەواو بوو!');
+                    }
+                }
+            });
+            
+            // Share options
+            shareOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const method = option.getAttribute('data-method');
+                    if (currentAppToShare) {
+                        shareApp(currentAppToShare, method);
+                        shareModal.classList.remove('active');
                     }
                 });
             });
-        });
+            
+            // Copy link button
+            copyLinkBtn.addEventListener('click', () => {
+                shareLinkInput.select();
+                document.execCommand('copy');
+                showToast('لینک هاتە کۆپیکرن!');
+            });
+            
+            // Close share modal
+            closeShareModal.addEventListener('click', () => {
+                shareModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            shareModal.addEventListener('click', (e) => {
+                if (e.target === shareModal) {
+                    shareModal.classList.remove('active');
+                }
+            });
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Close update notification
+            closeUpdateNotification.addEventListener('click', () => {
+                updateNotification.classList.remove('show');
+            });
+            
+            // Close security notification
+            closeSecurityNotification.addEventListener('click', () => {
+                securityScanNotification.classList.remove('show');
+            });
+            
+            // Show update notification after 5 seconds
+            setTimeout(() => {
+                showUpdateNotification();
+            }, 7000);
+            
+            // Privacy policy modal
+            privacyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                privacyModal.classList.add('active');
+            });
+            
+            securityLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                privacyModal.classList.add('active');
+            });
+            
+            closePrivacyModal.addEventListener('click', () => {
+                privacyModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            privacyModal.addEventListener('click', (e) => {
+                if (e.target === privacyModal) {
+                    privacyModal.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>

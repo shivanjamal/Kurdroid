@@ -1462,6 +1462,24 @@
     <script>
         // App data with ratings and security info
         const appData = [
+{ 
+        name: "Rebel Racing", 
+        category: "trombel", 
+        img: "https://play-lh.googleusercontent.com/nGz2Pr4LUoeauFCbOvqMZIAAt4lKjBbP2OGPwzp5PLxZ_rFZ-Pm1Od7I6BpFZHZD8w=w480-h960", 
+        link: "https://s1.spiderdown.com/Rebel%20Racing/Rebel-Racing-v27.00.18886-mod3.apk", 
+        rating: 4.3, reviews: 8900, verified: true, lastScanned: "2025-01-18" 
+    },
+
+{ 
+        name: "Car Parking Multiplayer",
+        category: "trombel",
+        img: "https://downloadr2.apkmirror.com/wp-content/uploads/2022/09/97/6311df59365e1.png",
+        link: "https://s1.spiderdown.com/Car%20Parking%20Multiplayer/car-parking-multiplayer-v4.9.4.1-Money.apk",
+        rating: 5.0,
+        reviews: 25463,
+        verified: true,
+        lastScanned: "2025-01-06"
+    },
             { name: "PUBG Mobile", category: "action", img: "https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png", link: "https://files.an1.co/pubg-mobile-3.9.0-an1.com.apk", rating: 4.5, reviews: 12500, verified: true, lastScanned: "2025-01-15" },
             { name: "Instagram", category: "social", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png", link: "https://s1.spiderdown.com/Instagram/Instagram%20v24%20%28Plus%29.apk", rating: 4.3, reviews: 8560, verified: true, lastScanned: "2025-01-14" },
             { name: "eFootball", category: "sport", img: "https://play-lh.googleusercontent.com/Isc4sJZXui8XmJAf4kUgaVk_TOpk4pM6qq8m_dqoTE6Dcmd_uiAsRzYhYnOQ14bbu6I=w480-h960", link: "https://files.an1.co/efootball-2025_10.0.1-an1.com.apk", rating: 4.0, reviews: 7200, verified: true, lastScanned: "2025-01-13" },
@@ -1476,14 +1494,16 @@
             { name: "Free Fire", category: "action", img: "https://play-lh.googleusercontent.com/jHnf_3-yMox_Tub_oLKQ7OuOi8Iahf1f4rdu-etZ2hmzUOekY84znct-c8hksxhD15PYNk4dMH2ZdVY3uxm7Gw=w480-h960", link: "https://s1.spiderdown.com/old-data/Free%20Fire%20MAX/garena-free-fire-max-v2.94.1-mod-installer.apk", rating: 4.3, reviews: 16700, verified: true, lastScanned: "2025-01-06" }
         ];
 
+
         // Category data
-        const navData = [
-            { filter: 'all', label: 'هەمی', icon: 'fas fa-th' },
-            { filter: 'action', label: 'ئەکشن', icon: 'fas fa-fighter-jet' },
-            { filter: 'sport', label: 'وەرزشی', icon: 'fas fa-futbol' },
-            { filter: 'social', label: 'سۆشیال', icon: 'fas fa-comments' },
-            { filter: 'tools', label: 'ئامراز', icon: 'fas fa-tools' }
-        ];
+const navData = [
+    { filter: 'all', label: 'هەمی', icon: 'fas fa-th' },
+    { filter: 'action', label: 'ئەکشن', icon: 'fas fa-fighter-jet' },
+    { filter: 'sport', label: 'وەرزشی', icon: 'fas fa-futbol' },
+    { filter: 'social', label: 'سۆشیال', icon: 'fas fa-comments' },
+    { filter: 'tools', label: 'ئامراز', icon: 'fas fa-tools' },
+    { filter: 'trombel', label: 'تڕۆمبێل', icon: 'fas fa-car-side' } // 👈 icon cars
+];
 
         // DOM elements
         const appsGrid = document.getElementById('appsGrid');

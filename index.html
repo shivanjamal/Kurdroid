@@ -6,6 +6,61 @@
     <title>Kurdroid - داونلۆدا یاری و بەرنامێن ئەندرۆید</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+/* ... کۆدی CSSی پێشوو ... */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* ڕێگە دەدات کە توخمەکان بچنە سەر ڕیزێکی تر */
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column; /* لوگۆ و ئایکۆنەکان بچنە ژێر یەک */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .nav-actions {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .logo {
+        justify-content: center;
+    }
+}
+
+/* ... کۆدی CSSی پێشوو ... */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column; /* لوگۆ و icon بچنە ژێر یەک */
+        gap: 10px;
+    }
+
+    .nav-actions {
+        justify-content: center;
+    }
+}
         :root {
             --primary-color: #3DDC84;
             --primary-dark: #2AB370;
@@ -84,12 +139,12 @@
 
         /* Header */
         header {
-            background-color: var(--light-color);
-            padding: 15px 0;
+            background-color: var(---color);
+            padding: 0px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
@@ -1183,23 +1238,29 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <img src="https://i.ibb.co/fYm0TR8g/IMG-1012.png" alt="Kurdroid Logo" class="logo-icon">
-                    Roid<span>Kurd</span>
-                </a>
-                <div class="nav-actions">
-                    <!-- Download Manager Button -->
-                    <button class="download-manager-btn" id="downloadManagerBtn">
-                        <i class="fas fa-download"></i>
-                        <span class="download-count-badge" id="downloadCount">0</span>
-                    </button>
-                    
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-            </div>
+    <div class="logo" style="display:flex; align-items:center; gap:15px;">
+        <!-- GIF Logo -->
+        <a href="https://jumpshare.com/share/J6RtZjcuXC0Gj6rVWMjJ">
+            <img src="https://previews.jumpshare.com/gif/815bc01b796dd6f1733c957c5af1949319a1ff23ce014d10af0feaf870a32c99948068663f0d2544730210463e2411652e0bd6228377173c63e2da8107d87345df649066ee799f37d6f28733201e65bd" 
+                 alt="Kurdroid Logo" class="logo-icon" style="max-width:60px; height:auto;">
+        </a>
+        <span style="font-size:1.8rem; font-weight:700; color:var(--dark-color);">
+            <span style="color:var(--primary-color)">Kurd Roid</span>
+        </span>
+
+        <!-- Actions (Download + Theme) -->
+        <div class="nav-actions" style="display:flex; gap:15px; margin-right:10px;">
+            <button class="download-manager-btn" id="downloadManagerBtn">
+                <i class="fas fa-download"></i>
+                <span class="download-count-badge" id="downloadCount">0</span>
+            </button>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
+    </div>
+</div>
     </header>
 
     <main class="container">

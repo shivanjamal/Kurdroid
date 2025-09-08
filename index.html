@@ -6,6 +6,60 @@
     <title>Kurdroid - داونلۆدا یاری و بەرنامێن ئەندرۆید</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+/* 📱 Mobile Responsive Improvements for Header */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: row; /* هێشتنەوەی ڕیزکردنی ئاسۆیی */
+        justify-content: space-between;
+        padding: 10px 0;
+        gap: 5px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo span {
+        font-size: 1.4rem;
+    }
+    
+    .logo-icon {
+        max-width: 45px !important;
+    }
+    
+    .nav-actions {
+        margin-right: 0;
+        gap: 10px;
+    }
+    
+    .theme-toggle, .download-manager-btn {
+        font-size: 1.1rem;
+        padding: 6px;
+    }
+    
+    .download-count-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo span {
+        font-size: 1.2rem;
+    }
+    
+    .logo-icon {
+        max-width: 40px !important;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+    }
+}
+
+
+
 /* ... کۆدی CSSی پێشوو ... */
 
 .header-content {
@@ -1247,6 +1301,8 @@
         <span style="font-size:1.8rem; font-weight:700; color:var(--dark-color);">
             <span style="color:var(--primary-color)">Kurd Roid</span>
         </span>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3425390486469684"
+     crossorigin="anonymous"></script>
 
         <!-- Actions (Download + Theme) -->
         <div class="nav-actions" style="display:flex; gap:15px; margin-right:10px;">

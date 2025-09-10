@@ -84,7 +84,7 @@ const generatedJsonOutput = document.getElementById('generatedJsonOutput');
 const copyJsonBtn = document.getElementById('copyJsonBtn');
 
 // --- CONFIGURATION ---
-const APP_UPLOAD_BASE_URL = "https://your-server.com/path/to/uploads/"; // **IMPORTANT**: Change this to your base URL
+const APP_UPLOAD_BASE_URL = "https://kurdroid.netlify.app/path/to/uploads/"; // **IMPORTANT**: Change this to your base URL
 
 // State variables
 let currentFilter = 'all';

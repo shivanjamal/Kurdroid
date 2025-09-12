@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurdroid - داونلۆدا یاری و بەرنامێن ئەندرۆید</title>
+    <title>Kurdroid - Download Android Games and Apps</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,9 +24,12 @@
                         <i class="fas fa-download"></i>
                         <span class="download-count-badge" id="downloadCount">0</span>
                     </button>
-                    <button class="nav-action-btn" id="addAppBtn" title="زیادکردنی ئەپ">
+                    <button class="nav-action-btn" id="addAppBtn" title="Add App">
                         <i class="fas fa-plus"></i>
                     </button>
+                    <a href="profile.html" class="nav-action-btn" title="My Profile">
+                        <i class="fas fa-user"></i>
+                    </a>
                     <button class="theme-toggle" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -37,30 +43,19 @@
         <section class="hero-section">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-crown"></i> پلاتفۆرم ژمارە ١ بۆ دابەزاندنا ئەپێ </div>
-                <h1 class="hero-title">باشترین ئەپێن بۆ مۆبایلێن ئەندرۆید</h1>
-                <p class="hero-subtitle">هەمی ئەپ و یاریێن بێ بەرامبەر و بێ خەلەتی</p>
+                    <i class="fas fa-rocket"></i> #1 Platform for App Downloads </div>
+                <h1 class="hero-title">The World of Apps in Your Hands</h1>
+                <p class="hero-subtitle">Download thousands of cracked and virus-free apps and games</p>
                 
                 <div class="hero-apps">
-                    <div class="hero-app">
-                        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png" alt="PUBG Mobile">
-                    </div>
-                    <div class="hero-app">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png" alt="Instagram">
-                    </div>
-                    <div class="hero-app">
-                        <img src="https://play-lh.googleusercontent.com/Isc4sJZXui8XmJAf4kUgaVk_TOpk4pM6qq8m_dqoTE6Dcmd_uiAsRzYhYnOQ14bbu6I=w480-h960" alt="eFootball">
-                    </div>
-                    <div class="hero-app">
-                        <img src="https://img.freepik.com/premium-vector/vector-tiktok-social-media-logo_1093524-451.jpg?semt=ais_hybrid&w=740&q=80" alt="TikTok">
-                    </div>
+                    <!-- Hero apps will be loaded by JavaScript -->
                 </div>
             </div>
         </section>
 
         <section class="search-section">
             <div class="search-container">
-                <input type="text" id="searchInput" class="search-bar" placeholder="ل یاری یان بەرنامەیەکێ بگەڕێ...">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search for a game or app...">
                 <i class="search-icon fas fa-search"></i>
             </div>
             <div class="search-history-container" id="searchHistoryContainer">
@@ -76,51 +71,27 @@
         <section class="featured-section">
             <h2 class="section-title">
                 <i class="fas fa-star"></i>
-                ئەپێن هەڵبژارتی
+                Featured Apps
             </h2>
             
             <div class="featured-app" id="featuredAppContainer">
-                <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2025/03/10/67ca5da6299a5_com.pubg.krmobile.png" alt="PUBG Mobile" class="featured-app-image">
-                <div class="featured-app-content">
-                    <span class="featured-badge">ئەپێ هەڵبژارتی</span>
-                    <h2 class="featured-app-title">PUBG Mobile</h2>
-                    <p class="featured-app-description">
-                        یاریا PUBG Mobile یاریەکا ئەکشنی جڤاکی یە کو لسەر ئەندرۆید و ئای ئۆ ئێس بەردەستە. د یاریەکێ دا خەلکێ جیهانێ کۆم دبن بۆ شەڕکرن و رزگاربوونێ. یاریێ گرافیکێن نایاب هەنە و رێیێ ددەت ب یاریێ کرنێ دگەل هەڤالێن خو.
-                    </p>
-                    <div class="featured-app-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-download"></i>
-                            <span>١٠٠ ملیۆن+</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-star"></i>
-                            <span>4.5 (12.5K)</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>1.2 GB</span>
-                        </div>
-                    </div>
-                    <button class="featured-download-btn pulse" data-link="https://shrinkme.ink/iamshvan2">
-                        <i class="fas fa-download"></i>
-                        داگرتن
-                    </button>
-                </div>
+                <!-- Featured app content will be loaded by JavaScript -->
+                <div class="spinner-container" style="display: block; padding: 50px;"><div class="spinner"></div></div>
             </div>
         </section>
 
         <div class="section-header">
             <h2 class="section-title">
                 <i class="fas fa-th-large"></i>
-                یاری و بەرنامە
+                Games & Apps
             </h2>
             <div class="sort-container">
                 <i class="fas fa-sort-amount-down"></i>
                 <select id="sortApps" class="sort-dropdown">
-                    <option value="default">ڕیزکردن</option>
-                    <option value="name-asc">ناو (أ - ي)</option>
-                    <option value="updated-desc">نوێترین نوێکاری</option>
-                    <option value="rating-desc">هەڵسەنگاندن (زۆرترین)</option>
+                    <option value="default">Sort by</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="updated-desc">Last Updated</option>
+                    <option value="rating-desc">Rating (High to Low)</option>
                 </select>
             </div>
         </div>
@@ -132,22 +103,22 @@
         <div class="grid-container" id="appsGrid"></div>
         
         <div id="no-results-message">
-            <i class="fas fa-search"></i>
-            <h3>ببورە، چ ئەنجام نەهاتنە دیتن!</h3>
-            <p>ژبۆ لێگەریانەکا دی بجەڕبینە.</p>
+            <i class="fas fa-box-open"></i>
+            <h3>No results found</h3>
+            <p>Please try another keyword or change the filters.</p>
         </div>
         
         <div class="load-more-container">
             <button id="loadMoreBtn">
                 <i class="fas fa-arrow-down"></i>
-                بارکرنا زێدەتر
+                Load More
             </button>
         </div>
 
         <div class="recommendations-section">
             <h2 class="section-title">
-                <i class="fas fa-star"></i>
-پێشنیارێن بۆ تە
+                <i class="fas fa-thumbs-up"></i>
+Recommended For You
             </h2>
             <div class="recommendations-container" id="recommendationsContainer">
                 <!-- Recommendations will be generated by JavaScript -->
@@ -157,12 +128,13 @@
 
     <div id="toast" class="toast-notification">
         <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">لینک هاتە کۆپیکرن!</span>
+        <span id="toastMessage">Link copied!</span>
+        <button id="toastActionBtn" class="toast-action-btn"></button>
     </div>
 
     <div id="updateNotification" class="update-notification">
         <i class="fas fa-sync-alt"></i>
-        <span id="updateMessage">نووکرنەوەیەک هەیە بۆ ئەپێن تە!</span>
+        <span id="updateMessage">An update is available for your apps!</span>
         <button class="close-btn" id="closeUpdateNotification">
             <i class="fas fa-times"></i>
         </button>
@@ -170,7 +142,7 @@
 
     <div id="securityScanNotification" class="security-scan-notification">
         <i class="fas fa-shield-alt"></i>
-        <span id="securityScanMessage">پشکنینا ئەپێ بۆ مەلەرێ ب سەرکەفتیانە ب دووماهی هات.</span>
+        <span id="securityScanMessage">App scan for malware completed successfully.</span>
         <button class="close-btn" id="closeSecurityNotification">
             <i class="fas fa-times"></i>
         </button>
@@ -180,13 +152,13 @@
     <div class="modal-overlay download-manager-modal" id="downloadManagerModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">ڕێڤەبەرێ داگرتنێن</h2>
+                <h2 class="modal-title">Download Manager</h2>
                 <div class="download-manager-global-actions">
-                    <button class="download-action-btn" id="pauseAllBtn" title="هەمی راگرە"><i class="fas fa-pause-circle"></i></button>
-                    <button class="download-action-btn" id="resumeAllBtn" title="هەمی دەستپێبکە"><i class="fas fa-play-circle"></i></button>
-                    <button class="download-action-btn" id="importHistoryBtn" title="هاوردەکردن"><i class="fas fa-file-import"></i></button>
+                    <button class="download-action-btn" id="pauseAllBtn" title="Pause All"><i class="fas fa-pause-circle"></i></button>
+                    <button class="download-action-btn" id="resumeAllBtn" title="Resume All"><i class="fas fa-play-circle"></i></button>
+                    <button class="download-action-btn" id="importHistoryBtn" title="Import"><i class="fas fa-file-import"></i></button>
                     <input type="file" id="importFileInput" accept=".csv" style="display: none;">
-                    <button class="download-action-btn" id="exportCsvBtn" title="هەناردەکردن وەک CSV"><i class="fas fa-file-csv"></i></button>
+                    <button class="download-action-btn" id="exportCsvBtn" title="Export as CSV"><i class="fas fa-file-csv"></i></button>
                 </div>
                 <button class="modal-close" id="closeDownloadManagerModal">
                     <i class="fas fa-times"></i>
@@ -194,24 +166,24 @@
             </div>
             <div class="modal-content">
                 <div class="download-tabs">
-                    <div class="download-tab active" data-tab="active">چالاک</div>
-                    <div class="download-tab" data-tab="completed">درستە</div>
-                    <div class="download-tab" data-tab="failed">شکەستی</div>
+                    <div class="download-tab active" data-tab="active">Active</div>
+                    <div class="download-tab" data-tab="completed">Completed</div>
+                    <div class="download-tab" data-tab="failed">Failed</div>
                 </div>
                 
                 <div class="download-list" id="downloadList">
                     <!-- Download items will be added here dynamically -->
                     <div class="empty-state" id="emptyDownloadState">
                         <i class="fas fa-download"></i>
-                        <h3>چ دابەزاندنەک نینە.</h3>
-                        <p>ئەپەکێ هەلبژئرە بۆ دەستپێکرنێ.</p>
+                        <h3>No downloads yet.</h3>
+                        <p>Select an app to start downloading.</p>
                     </div>
                 </div>
                 
                 <div class="download-stats">
-                    <span>سەرجەمئ گشتی: <span id="totalDownloads">0</span></span>
-                    <button class="clear-history-btn" id="clearDownloadsBtn">سڕینەوەی مێژوو</button>
-                    <span>بکارهاتی: <span id="totalSize">0 MB</span></span>
+                    <span>Total Downloads: <span id="totalDownloads">0</span></span>
+                    <button class="clear-history-btn" id="clearDownloadsBtn">Clear History</button>
+                    <span>Total Size: <span id="totalSize">0 MB</span></span>
                 </div>
             </div>
         </div>
@@ -221,7 +193,7 @@
     <div class="modal-overlay share-modal" id="shareModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">پارڤەکرنا ئەپێ</h2>
+                <h2 class="modal-title">Share App</h2>
                 <button class="modal-close" id="closeShareModal">
                     <i class="fas fa-times"></i>
                 </button>
@@ -230,30 +202,42 @@
                 <div class="share-options">
                     <div class="share-option" data-method="facebook">
                         <i class="fab fa-facebook share-icon" style="color: #1877F2;"></i>
-                        <span class="share-option-name">فەیسبووک</span>
+                        <span class="share-option-name">Facebook</span>
                     </div>
                     <div class="share-option" data-method="twitter">
                         <i class="fab fa-twitter share-icon" style="color: #1DA1F2;"></i>
-                        <span class="share-option-name">تویتەر</span>
+                        <span class="share-option-name">Twitter</span>
                     </div>
                     <div class="share-option" data-method="whatsapp">
                         <i class="fab fa-whatsapp share-icon" style="color: #25D366;"></i>
-                        <span class="share-option-name">واتسئاپ</span>
+                        <span class="share-option-name">WhatsApp</span>
                     </div>
                     <div class="share-option" data-method="telegram">
                         <i class="fab fa-telegram share-icon" style="color: #0088cc;"></i>
-                        <span class="share-option-name">تێلێگرام</span>
+                        <span class="share-option-name">Telegram</span>
                     </div>
                     <div class="share-option" data-method="link">
                         <i class="fas fa-link share-icon" style="color: var(--primary-color);"></i>
-                        <span class="share-option-name">لینک</span>
+                        <span class="share-option-name">Link</span>
+                    </div>
+                    <div class="share-option" data-method="messenger">
+                        <i class="fab fa-facebook-messenger share-icon" style="color: #00B2FF;"></i>
+                        <span class="share-option-name">Messenger</span>
+                    </div>
+                    <div class="share-option" data-method="viber">
+                        <i class="fab fa-viber share-icon" style="color: #665CAC;"></i>
+                        <span class="share-option-name">Viber</span>
+                    </div>
+                    <div class="share-option" data-method="snapchat">
+                        <i class="fab fa-snapchat-ghost share-icon" style="color: #FFFC00; text-shadow: 0 0 2px #000;"></i>
+                        <span class="share-option-name">Snapchat</span>
                     </div>
                 </div>
                 
                 <div class="share-link">
                     <input type="text" class="share-link-input" id="shareLinkInput" readonly>
                     <button class="copy-link-btn" id="copyLinkBtn">
-                        <i class="fas fa-copy"></i> کۆپی
+                        <i class="fas fa-copy"></i> Copy
                     </button>
                 </div>
             </div>
@@ -263,41 +247,41 @@
     <div class="modal-overlay" id="privacyModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">پۆلێسی پاراستنی نهێنی</h2>
+                <h2 class="modal-title">Privacy Policy</h2>
                 <button class="modal-close" id="closePrivacyModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-content">
-                <p>ل KurdRoid، مە پاراستنا زانیاریێن کەسی و سەلامەتیا بکارئینەرێن مە د پێشیا کارێن مە دایە. ئەڤ پۆلیسییا پاراستنا نهێنیێ روون دکەت کا چاوا مە زانیاری کۆم دکەین، بکار دئینین و پارێزگەریێ لێ دکەین.</p>
+                <p>At KurdRoid, we prioritize the protection of personal information and the safety of our users. This Privacy Policy explains how we collect, use, and protect your information.</p>
                 
-                <h3>زانیارییێن کۆمکری</h3>
-                <p>ئەم تەنێ وان زانیاریێن کەسی یێن کێم کۆدکەین یێن پێدڤی بۆ باشترکرنا ئەزموونا بکارئینەران.:</p>
+                <h3>Information We Collect</h3>
+                <p>We only collect minimal personal information necessary to improve the user experience:</p>
                 <ul>
-                    <li>زانیاریێن داکێشانێ (کا ئەپەک چەند جاران دهێتە داکێشان)</li>
-                    <li>پسپۆریێن وێبگەڕی (بکارهێنانا زمان و جهی)</li>
-                    <li>ئەپێن داگیرکری (بۆ پێشنیارکرنا نویکرنان)</li>
+                    <li>Download information (how many times an app is downloaded)</li>
+                    <li>Browser preferences (language and location usage)</li>
+                    <li>Installed apps (to suggest updates)</li>
                 </ul>
                 
-                <h3>چەوانیا بکارئینانا زانیارییان</h3>
-                <p>ئەمە زانیارییان ب کاردئینین ژ بۆ:</p>
+                <h3>How We Use Information</h3>
+                <p>We use the information to:</p>
                 <ul>
-                    <li>پێشنیارکرنا ئەپێن پەیوەندیدار</li>
-                    <li>ناساندنا ئەپێن باوەرپێکری</li>
-                    <li>دابینکرنا نویکرنێ بۆ ئەپێن داگیرکری</li>
-                    <li>باشترکرنا کوالێتیا خزمەتگوزاریێ</li>
+                    <li>Recommend relevant apps</li>
+                    <li>Identify trusted apps</li>
+                    <li>Provide updates for installed apps</li>
+                    <li>Improve the quality of our service</li>
                 </ul>
                 
-                <h3>پاراستنا زانیارییان</h3>
-                <p>چ زانیارییەکا کەسی نەهاتییە فرۆتن بۆ چ کۆمپانییەکا دی. هەموو زانیاری ژ لایێ پارێزگەرییەکا پێشکەفتی ڤە دهێنە پاراستن.</p>
+                <h3>Information Protection</h3>
+                <p>No personal information is sold to any other company. All information is protected by advanced security measures.</p>
                 
-                <h3>پشکنینا سەلامەتیێ</h3>
-                <p>هەموو ئەپەکان ب رێیا پشکنینا مەلەروو دچنە پێشیا وێ کو بهێنە بەردەستکرن. ئەم پشکنینێن رۆژانە دکەین ژ بۆ دلنیabوونێ کو چ مەلەروو د ئەپاندا نینن.</p>
+                <h3>Security Scan</h3>
+                <p>All apps go through a malware scan before being made available. We perform daily scans to ensure that there is no malware in the apps.</p>
                 
-                <h3>پەیوەندی کرن</h3>
-                <p>ئەگەر تە پرسیارەک هەبیت دەربارەی ڤێ پۆلیسیا پاراستنا نهێنی، هیڤیە پەیوەندیێ ب مە بکە ل<a href="mailto:iamshvan@gmail.com">iamshvan@gmail.com</a>.</p>
+                <h3>Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:iamshvan@gmail.com">iamshvan@gmail.com</a>.</p>
                 
-                <p>دوماهیک نویکرن: ١ی کانوونا دووێ ٢٠٢٥</p>
+                <p>Last updated: January 1, 2025</p>
             </div>
         </div>
     </div>
@@ -306,16 +290,16 @@
     <div class="modal-overlay" id="confirmationModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">دڵنیاکردنەوەی سڕینەوە</h2>
+                <h2 class="modal-title">Confirm Deletion</h2>
                 <button class="modal-close" id="closeConfirmationModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-content">
-                <p>ئایا دڵنیایت کە دەتەوێت ئەم دابەزاندنە بسڕیتەوە؟ ئەم کردارە ناتوانرێت هەڵبوەشێنرێتەوە.</p>
+                <p>Are you sure you want to delete this download? This action cannot be undone.</p>
                 <div class="modal-actions">
-                    <button class="btn btn-danger" id="confirmDeleteBtn">سڕینەوە</button>
-                    <button class="btn btn-secondary" id="cancelDeleteBtn">هەڵوەشاندنەوە</button>
+                    <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                    <button class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
                 </div>
             </div>
         </div>
@@ -343,23 +327,21 @@
                 <div class="app-details-actions">
                      <button class="download-btn" id="appDetailsDownloadBtn">
                         <i class="fas fa-download"></i>
-                        <span>داگرتن</span>
                     </button>
                     <a id="reportIssueBtn" class="report-issue-btn">
                         <i class="fas fa-flag"></i>
-                        <span>ڕاپۆرت</span>
+                        <span>Report</span>
                     </a>
                     <button class="share-btn" id="appDetailsShareBtn">
                         <i class="fas fa-share-alt"></i>
                     </button>
                 </div>
                 <div class="app-details-section">
-                    <h3>
-                        <i class="fas fa-info-circle"></i> دەربارەی ئەپ
-                        <button class="copy-description-btn" id="copyDescriptionBtn" title="کۆپیکردنی دەق"><i class="fas fa-copy"></i></button>
+                    <h3><i class="fas fa-info-circle"></i> About App
+                        <button class="copy-description-btn" id="copyDescriptionBtn" title="Copy Description"><i class="fas fa-copy"></i></button>
                     </h3>
                     <p id="appDetailsDescription">Description will be loaded here.</p>
-                    <h3><i class="fas fa-sparkles"></i> گۆڕانکاریێن نوو</h3>
+                    <h3><i class="fas fa-sparkles"></i> What's New</h3>
                     <ul id="appDetailsWhatsNew" class="whats-new-list"></ul>
                 </div>
             </div>
@@ -370,16 +352,16 @@
     <div class="modal-overlay" id="removeFavoriteModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">لابردنی دڵخواز</h2>
+                <h2 class="modal-title">Remove Favorite</h2>
                 <button class="modal-close" id="closeRemoveFavoriteModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-content">
-                <p>ئایا دڵنیایت کە دەتەوێت ئەم ئەپە لە لیستی دڵخوازەکانت لاببەیت؟</p>
+                <p>Are you sure you want to remove this app from your favorites?</p>
                 <div class="modal-actions">
-                    <button class="btn btn-danger" id="confirmRemoveFavoriteBtn">لابردن</button>
-                    <button class="btn btn-secondary" id="cancelRemoveFavoriteBtn">هەڵوەشاندنەوە</button>
+                    <button class="btn btn-danger" id="confirmRemoveFavoriteBtn">Remove</button>
+                    <button class="btn btn-secondary" id="cancelRemoveFavoriteBtn">Cancel</button>
                 </div>
             </div>
         </div>
@@ -389,60 +371,60 @@
     <div class="modal-overlay" id="addAppModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">زیادکردنی ئەپ/یاری نوێ</h2>
+                <h2 class="modal-title">Add New App/Game</h2>
                 <button class="modal-close" id="closeAddAppModal">&times;</button>
             </div>
             <div class="modal-content">
                 <form id="addAppForm" class="add-app-form">
                     <div class="form-group">
-                        <label for="newAppName">ناوی ئەپ</label>
+                        <label for="newAppName">App Name</label>
                         <input type="text" id="newAppName" required>
                     </div>
                     <div class="form-group">
-                        <label for="newAppCategory">پۆل</label>
+                        <label for="newAppCategory">Category</label>
                         <select id="newAppCategory" required>
-                            <option value="action">ئەکشن</option>
-                            <option value="sport">وەرزشی</option>
-                            <option value="social">سۆشیال</option>
-                            <option value="tools">ئامراز</option>
-                            <option value="trombel">تڕۆمبێل</option>
-                            <option value="movies">فیلم</option>
+                            <option value="action">Action</option>
+                            <option value="sport">Sport</option>
+                            <option value="social">Social</option>
+                            <option value="tools">Tools</option>
+                            <option value="trombel">Car</option>
+                            <option value="movies">Movies</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="newAppImg">لینکی وێنە</label>
+                        <label for="newAppImg">Image File</label>
                         <input type="file" id="newAppImg" required accept="image/png, image/jpeg, image/webp">
                     </div>
                     <div class="form-group">
-                        <label for="newAppFile">فایلی APK</label>
+                        <label for="newAppFile">APK File</label>
                         <input type="file" id="newAppFile" required accept=".apk">
                     </div>
                     <div class="form-group">
-                        <label for="newAppSize">قەبارەی ئەپ (بۆ نموونە: 150 MB)</label>
+                        <label for="newAppSize">App Size (e.g., 150 MB)</label>
                         <input type="text" id="newAppSize" required>
                     </div>
-                    <button type="submit" class="btn-submit">دروستکردنی کۆدی JSON</button>
+                    <button type="submit" class="btn-submit">Generate JSON Code</button>
                 </form>
                 <div id="generatedJsonContainer" style="display:none;">
-                    <h4>کۆدی دروستکراو</h4>
+                    <h4>Generated Code</h4>
                     <textarea id="generatedJsonOutput" readonly></textarea>
-                    <button id="copyJsonBtn">کۆپیکردنی کۆد</button>
+                    <button id="copyJsonBtn">Copy Code</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" title="بچۆ سەرەوە"><i class="fas fa-arrow-up"></i></button>
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 <a href="https://www.instagram.com/iamshvan.26">shvan jamal</a>. هەمی ماف پاراستینە.</p>
+                <p>&copy; 2025 KurdRoid. All Rights Reserved.</p>
                 <div class="footer-links">
-                    <a href="#" id="privacyLink">پۆلێسی پاراستنی نهێنی</a>
-                    <a href="#" id="securityLink">زانیاریێن سەلامەتیێ</a>
-                    <a href="mailto:iamshvan@gmail.com">پەیوەندی</a>
+                    <a href="#" id="privacyLink">Privacy Policy</a>
+                    <a href="#" id="securityLink">Security Info</a>
+                    <a href="mailto:iamshvan@gmail.com">Contact</a>
                 </div>
             </div>
         </div>

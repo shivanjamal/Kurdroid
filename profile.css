@@ -1,0 +1,246 @@
+.profile-header-container {
+    position: relative;
+    margin: 30px 0 40px;
+}
+
+.profile-cover-photo {
+    height: 250px;
+    background-color: var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-cover-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-edit-cover {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0,0,0,0.5);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.profile-cover-photo:hover .btn-edit-cover {
+    opacity: 1;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+    position: relative;
+    margin-top: -60px; /* Overlap with cover photo */
+}
+
+.profile-avatar {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 50%;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.profile-avatar:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--background-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profile-bio {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.profile-socials {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.profile-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.profile-content {
+    margin-top: 40px;
+}
+
+.profile-list {
+    margin-bottom: 40px;
+}
+
+.profile-list .review-item {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+}
+
+.profile-list .review-header {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.profile-list .review-item .review-date {
+    margin-left: 0; /* Override default */
+}
+
+.profile-list .review-item .review-body {
+    font-size: 1rem;
+}
+
+.profile-list .app-card {
+    cursor: default; /* No need to click to open details from here */
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        margin-top: -60px;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .profile-avatar img {
+        margin: 0;
+    }
+
+    .profile-info {
+        margin-top: 0;
+    }
+
+    .profile-name-header {
+        justify-content: center;
+    }
+
+    .profile-socials, .profile-stats {
+        justify-content: center;
+    }
+}
+
+/* Ensure textarea in modals has correct styling */
+.modal-content textarea {
+    width: 100%;
+}
+
+.btn-delete-review {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.btn-delete-review:hover {
+    color: var(--danger-color);
+    opacity: 1;
+}
+
+.btn-edit-profile {
+    background-color: var(--border-color);
+    color: var(--text-light);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-edit-profile:hover {
+    background-color: var(--primary-color);
+    color: rgb(0, 0, 0);
+}

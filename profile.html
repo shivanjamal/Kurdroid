@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - KurdRoid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="https://previews.jumpshare.com/gif/815bc01b796dd6f1733c957c5af1949319a1ff23ce014d10af0feaf870a32c99948068663f0d2544730210463e2411652e0bd6228377173c63e2da8107d87345df649066ee799f37d6f28733201e65bd" alt="Kurdroid Logo" class="logo-icon">
+                    <span>Kurd<span>Roid</span></span>
+                </a>
+
+                <div class="nav-actions">
+                    <a href="/" class="nav-action-btn" title="Home">
+                        <i class="fas fa-home"></i>
+                    </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="profile-header-container">
+            <div class="profile-cover-photo" id="coverPhotoContainer">
+                <img src="https://i.ibb.co/N6Z3YVCK/Whats-App-Image-2025-09-12-at-13-34-54-06422524.jpg" alt="Cover Photo" id="coverPhotoImg">
+            </div>
+            <div class="profile-header">
+                <div class="profile-avatar" id="avatarContainer" title="Change Avatar">
+                    <div class="avatar-overlay">  
+                    </div>
+                    <img src="https://i.ibb.co/LqKJKy0/0120-FB92-CE85-4958-B9-FA-31-E2-FCF37578.png" alt="User Avatar">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name-header">
+                        <h1 class="profile-name">iamshvan</h1>
+                    </div>
+                    <p class="profile-bio">App enthusiast and tech reviewer. Discovering the best apps for Android.</p>
+                    <div class="profile-socials" id="profileSocials"></div>
+                    <div class="profile-stats">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            
+            <div id="myReviewsList" class="profile-list"></div>
+            
+            <div id="myFavoritesList" class="grid-container profile-list"></div>
+        </div>
+    </main>
+
+    <!-- Delete Review Confirmation Modal -->
+    <div class="modal-overlay" id="deleteReviewModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirm Deletion</h2>
+                <button class="modal-close" id="closeDeleteReviewModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p>Are you sure you want to delete this review? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button class="btn btn-danger" id="confirmDeleteReviewBtn">Delete</button>
+                    <button class="btn btn-secondary" id="cancelDeleteReviewBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+        <button id="toastActionBtn" class="toast-action-btn"></button>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

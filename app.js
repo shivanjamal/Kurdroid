@@ -84,7 +84,7 @@ const generatedJsonOutput = document.getElementById('generatedJsonOutput');
 const copyJsonBtn = document.getElementById('copyJsonBtn');
 
 // --- CONFIGURATION ---
-const APP_UPLOAD_BASE_URL = "https://kurdroid.netlify.app/path/to/uploads/"; // **IMPORTANT**: Change this to your base URL
+const APP_UPLOAD_BASE_URL = "https://your-server.com/path/to/uploads/"; // **IMPORTANT**: Change this to your base URL
 
 // State variables
 let currentFilter = 'all';
@@ -124,7 +124,7 @@ function handleDownload(app) {
     simulateDownloadProgress(downloadId);
     // Download the file directly
     downloadFile(app.link, `${app.name}.apk`);
-    showToast('داگرتن دەستیپێکرد!');
+    showToast('Download started!');
 }
 
 
@@ -322,7 +322,7 @@ function createDownloadItem(download) {
             <div class="download-item-details">
                 <span>${download.size} MB</span>
                 ${download.status === 'downloading' ? `<span><i class="fas fa-arrow-down"></i> ${download.speed} MB/s</span>` : ''}
-                <span>${formatDate(download.date)}</span>
+                <span>${formatDate(download.date, 'en-US')}</span>
             </div>
             ${download.status !== 'completed' && download.status !== 'failed' ? `
             <div class="download-progress-bar">
@@ -332,21 +332,21 @@ function createDownloadItem(download) {
         </div>
         <div class="download-actions">
             ${download.status === 'downloading' ? `
-            <button class="download-action-btn pause-download" title="پشوو">
+            <button class="download-action-btn pause-download" title="Pause">
                 <i class="fas fa-pause"></i>
             </button>
             ` : ''}
             ${download.status === 'paused' ? `
-            <button class="download-action-btn resume-download" title="دەستپێکرنڤە">
+            <button class="download-action-btn resume-download" title="Resume">
                 <i class="fas fa-play"></i>
             </button>
             ` : ''}
             ${download.status === 'failed' ? `
-            <button class="download-action-btn retry-download" title="دووبارە">
+            <button class="download-action-btn retry-download" title="Retry">
                 <i class="fas fa-sync-alt"></i>
             </button>
             ` : ''}
-            <button class="download-action-btn delete-download" title="ژئبرن">
+            <button class="download-action-btn delete-download" title="Delete">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -383,9 +383,9 @@ function createDownloadItem(download) {
 }
 
 // Format date for display
-function formatDate(dateString) {
+function formatDate(dateString, locale = 'en-US') {
     const date = new Date(dateString);
-    return date.toLocaleDateString('ku');
+    return date.toLocaleDateString(locale);
 }
 
 // Pause download
@@ -481,7 +481,7 @@ function clearDownloadHistory() {
 // Export download history as a .csv file
 function exportDownloadHistoryCSV() {
     if (downloads.length === 0) {
-        showToast("مێژووی داگرتن بەتاڵە!");
+        showToast("Download history is empty!");
         return;
     }
 
@@ -497,7 +497,7 @@ function exportDownloadHistoryCSV() {
     };
 
     downloads.forEach(d => {
-        const row = [d.name, d.status, formatDate(d.date), d.size, d.link];
+        const row = [d.name, d.status, formatDate(d.date, 'en-US'), d.size, d.link];
         csvContent += row.map(escapeCsvField).join(",") + "\n";
     });
 
@@ -531,7 +531,7 @@ function importDownloadHistory(file) {
                 }
             }
         });
-        showToast(`${importedCount} داگرتن هاتنە زێدەکرن.`);
+        showToast(`${importedCount} downloads were imported.`);
     };
     reader.readAsText(file);
 }
@@ -556,7 +556,7 @@ function simulateDownloadProgress(downloadId) {
 function shareApp(app, method) {
     const appName = encodeURIComponent(app.name);
     const appLink = encodeURIComponent(app.link);
-    const shareText = encodeURIComponent(`سەحدکرنا ئەپی ${app.name} لە Kurdroid`);
+    const shareText = encodeURIComponent(`Check out the ${app.name} app on Kurdroid`);
 
     let shareUrl = '';
 
@@ -573,34 +573,46 @@ function shareApp(app, method) {
         case 'telegram':
             shareUrl = `https://t.me/share/url?url=${appLink}&text=${shareText}`;
             break;
+        case 'messenger':
+            shareUrl = `fb-messenger://share/?link=${appLink}`;
+            break;
+        case 'viber':
+            shareUrl = `viber://forward?text=${shareText} ${appLink}`;
+            break;
+        case 'snapchat':
+            shareUrl = `https://www.snapchat.com/share?url=${appLink}&text=${shareText}`;
+            break;
         case 'link':
             // For link copying, we'll handle it separately
             shareLinkInput.value = app.link;
             navigator.clipboard.writeText(app.link).then(() => {
-                showToast('لینک هاتە کۆپیکرن!');
+                showToast('Link copied!');
             }).catch(err => {
                 console.error('Failed to copy: ', err);
-                showToast('کۆپیکرن سەرکەوتوو نەبوو');
+                showToast('Failed to copy link');
             });
             return;
     }
 
     if (shareUrl) {
         window.open(shareUrl, '_blank');
-        showToast('ئەپەکە هاتە پارڤەکرن.!');
+        showToast('App shared!');
     }
 }
 
 // Toggle Favorite
 function toggleFavorite(appName, button) {
-    const appIndex = favorites.indexOf(appName);
+    const appIndex = favorites.findIndex(fav => fav.name === appName);
 
     if (appIndex > -1) {
         // App is already a favorite, so show confirmation to remove
         appNameToUnfavorite = appName;
         removeFavoriteModal.classList.add('active');
     } else {
-        favorites.push(appName); // Add to favorites
+        const appObject = appData.find(app => app.name === appName);
+        if (appObject) {
+            favorites.push(appObject); // Add the full app object
+        }
         button.classList.add('favorited');
         button.innerHTML = '<i class="fas fa-heart"></i>';
         localStorage.setItem('kurdroid_favorites', JSON.stringify(favorites));
@@ -611,7 +623,7 @@ function toggleFavorite(appName, button) {
 function removeFavorite() {
     if (!appNameToUnfavorite) return;
 
-    const appIndex = favorites.indexOf(appNameToUnfavorite);
+    const appIndex = favorites.findIndex(fav => fav.name === appNameToUnfavorite);
     if (appIndex > -1) {
         favorites.splice(appIndex, 1);
         localStorage.setItem('kurdroid_favorites', JSON.stringify(favorites));
@@ -632,14 +644,14 @@ function showAppDetails(app) {
 
 
     if (app.lastUpdated) {
-        appDetailsLastUpdated.innerHTML = `<i class="fas fa-calendar-alt"></i> نوێکرایەوە لە: ${formatDate(app.lastUpdated)}`;
+        appDetailsLastUpdated.innerHTML = `<i class="fas fa-calendar-alt"></i> Last Updated: ${formatDate(app.lastUpdated, 'en-US')}`;
         appDetailsLastUpdated.style.display = 'block';
     } else {
         appDetailsLastUpdated.style.display = 'none';
     }
 
     if (app.size) {
-        appDetailsSize.innerHTML = `<i class="fas fa-file-archive"></i> قەبارە: ${app.size}`;
+        appDetailsSize.innerHTML = `<i class="fas fa-file-archive"></i> Size: ${app.size}`;
         appDetailsSize.style.display = 'block';
     } else {
         appDetailsSize.style.display = 'none';
@@ -705,7 +717,7 @@ function showToast(message) {
 // Show security scan notification
 function showSecurityScanNotification() {
     const randomApp = appData[Math.floor(Math.random() * appData.length)];
-    securityScanMessage.textContent = `پشکنینی ${randomApp.name} بۆ مەلەرێ ب سەرکەفتیانە ب دووماهی هات.`;
+    securityScanMessage.textContent = `Scan for ${randomApp.name} completed successfully. No threats found.`;
     securityScanNotification.classList.add('show');
 
     setTimeout(() => {
@@ -716,7 +728,7 @@ function showSecurityScanNotification() {
 // Show update notification
 function showUpdateNotification() {
     const randomApp = appData[Math.floor(Math.random() * appData.length)];
-    updateMessage.textContent = `نووکرنەوەیەک بەردەستە بۆ ${randomApp.name}`;
+    updateMessage.textContent = `An update is available for ${randomApp.name}`;
     updateNotification.classList.add('show');
 
     setTimeout(() => {
@@ -795,8 +807,8 @@ function renderApps() {
 // Filter apps based on current filter and search
 function filterApps() {
     let filtered = appData.filter(app => {
-        const matchesFilter = currentFilter === 'all' || app.category === currentFilter;
-        if (currentFilter === 'favorites') return favorites.includes(app.name);
+        const isFavorited = favorites.some(fav => fav.name === app.name);
+        const matchesFilter = currentFilter === 'all' || (currentFilter === 'favorites' ? isFavorited : app.category === currentFilter);
         if (currentFilter === 'updates') return app.hasUpdate;
         const matchesSearch = app.name.toLowerCase().includes(currentSearch.toLowerCase());
         return matchesFilter && matchesSearch;
@@ -843,11 +855,11 @@ function createAppCard(app, index) {
         starsHTML += '<i class="far fa-star"></i>';
     }
 
-    const isFavorited = favorites.includes(app.name);
+    const isFavorited = favorites.some(fav => fav.name === app.name);
 
     card.innerHTML = `
-        ${app.verified ? '<div class="security-badge"><i class="fas fa-shield-alt"></i> پشکنین کریە</div>' : ''}
-        ${app.hasUpdate ? '<div class="update-badge pulse"><i class="fas fa-arrow-up"></i> نوێ</div>' : ''}
+        ${app.verified ? '<div class="security-badge"><i class="fas fa-shield-alt"></i> Scanned</div>' : ''}
+        ${app.hasUpdate ? '<div class="update-badge pulse"><i class="fas fa-arrow-up"></i> New</div>' : ''}
         <img data-src="${app.img}" alt="${app.name}" class="app-image">
         <div class="app-content">
             <h3 class="app-name">${app.name}</h3>
@@ -862,7 +874,6 @@ function createAppCard(app, index) {
                         </button>
                 <button class="download-btn" data-link="${app.link}" data-name="${app.name}">
                     <i class="fas fa-download"></i>
-                    <span>داگرتن</span>
                     <div class="download-progress"></div>
                 </button>
                 <button class="share-btn" data-app="${app.name}">
@@ -1036,7 +1047,7 @@ function setupEventListeners() {
                     
                     if (progress >= 100) {
                         clearInterval(interval);
-                        showToast('داگرتن ب دوماهی هات!');
+                        showToast('Download finished!');
                         // Reset progress after a delay
                         setTimeout(() => {
                             progressBar.style.width = '0%';
@@ -1072,7 +1083,7 @@ function setupEventListeners() {
             const app = appData.find(a => a.name === "PUBG Mobile");
             if (app) {
                 handleDownload(app);
-                showToast('داگرتن دەستیپێکرد!');
+                showToast('Download started!');
             }
         }
     });
@@ -1092,10 +1103,10 @@ function setupEventListeners() {
     copyLinkBtn.addEventListener('click', () => {
         const linkToCopy = shareLinkInput.value;
         navigator.clipboard.writeText(linkToCopy).then(() => {
-            showToast('لینک هاتە کۆپیکرن!');
+            showToast('Link copied!');
         }).catch(err => {
             console.error('Failed to copy link: ', err);
-            showToast('کۆپیکرن سەرکەوتوو نەبوو');
+            showToast('Failed to copy link');
         });
     });
 
@@ -1197,7 +1208,7 @@ function setupEventListeners() {
     copyJsonBtn.addEventListener('click', () => {
         generatedJsonOutput.select();
         navigator.clipboard.writeText(generatedJsonOutput.value).then(() => {
-            showToast('کۆدی JSON هاتە کۆپیکرن!');
+            showToast('JSON code copied!');
         });
     });
 
@@ -1225,10 +1236,10 @@ function setupEventListeners() {
     copyDescriptionBtn.addEventListener('click', () => {
         const descriptionText = appDetailsDescription.textContent;
         navigator.clipboard.writeText(descriptionText).then(() => {
-            showToast('دەق هاتە کۆپیکرن!');
+            showToast('Description copied!');
         }).catch(err => {
             console.error('Failed to copy description: ', err);
-            showToast('کۆپیکرن سەرکەوتوو نەبوو');
+            showToast('Failed to copy description');
         });
     });
 
@@ -1300,6 +1311,68 @@ function setupEventListeners() {
     });
 }
 
+// Render Featured App
+function renderFeaturedApp() {
+    const featuredApp = appData.find(app => app.isFeatured);
+    if (!featuredApp || !featuredAppContainer) return;
+
+    featuredAppContainer.innerHTML = `
+        <img src="${featuredApp.img}" alt="${featuredApp.name}" class="featured-app-image">
+        <div class="featured-app-content">
+            <span class="featured-badge">Special</span>
+            <h2 class="featured-app-title">${featuredApp.name}</h2>
+            <p class="featured-app-description">
+                ${featuredApp.description || 'No description available.'}
+            </p>
+            <div class="featured-app-meta">
+                <div class="meta-item">
+                    <i class="fas fa-download"></i>
+                    <span>${formatNumber(featuredApp.reviews * 10)}+</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-star"></i>
+                    <span>${featuredApp.rating} (${formatNumber(featuredApp.reviews)})</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>${featuredApp.size}</span>
+                </div>
+            </div>
+            <button class="featured-download-btn pulse">
+                <i class="fas fa-download"></i>
+            </button>
+        </div>
+    `;
+
+    // Add event listener to the new dynamic button
+    const newFeaturedDownloadBtn = featuredAppContainer.querySelector('.featured-download-btn');
+    newFeaturedDownloadBtn.addEventListener('click', () => {
+        handleDownload(featuredApp);
+    });
+}
+
+// Render Hero Apps
+function renderHeroApps() {
+    const heroAppsContainer = document.querySelector('.hero-apps');
+    if (!heroAppsContainer) return;
+
+    heroAppsContainer.innerHTML = ''; // Clear hardcoded apps
+
+    // Get 4 random apps
+    const shuffled = [...appData].sort(() => 0.5 - Math.random());
+    const selectedApps = shuffled.slice(0, 4);
+
+    selectedApps.forEach(app => {
+        const heroAppEl = document.createElement('div');
+        heroAppEl.className = 'hero-app';
+        heroAppEl.innerHTML = `<img src="${app.img}" alt="${app.name}">`;
+        heroAppEl.addEventListener('click', () => {
+            showAppDetails(app);
+        });
+        heroAppsContainer.appendChild(heroAppEl);
+    });
+}
+
 // Lazy Loading for images
 let lazyLoadObserver;
 
@@ -1342,6 +1415,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     renderCategories();
     renderApps();
+    renderFeaturedApp();
+    renderHeroApps();
     renderRecommendations();
     setupEventListeners();
     applyTheme();
